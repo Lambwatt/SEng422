@@ -1,4 +1,13 @@
 <h1>LSCS</h1>
 
 <p>Welcome to the Association of BC Land Surveyors Checklist System.</p>
-<p>Please sign in:<p>
+
+<% unless user_signed_in? -%>
+	<%= link_to "Log in", new_user_session_path %>
+<% end -%>
+
+<% if user_signed_in? -%>
+	<p>You're signed in, I guess</p>
+	<%= link_to "Todos", todo_lists_path %><br/>
+	<%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+<% end -%>
