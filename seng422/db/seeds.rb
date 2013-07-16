@@ -8,7 +8,7 @@
 
 # dummy user
 user = User.new
-user.email = "e@mail.com"
+user.username = "surveyor"
 user.password = "password"
 user.password_confirmation = "password"
 user.save!

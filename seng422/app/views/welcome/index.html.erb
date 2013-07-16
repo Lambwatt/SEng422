@@ -7,7 +7,7 @@
 <% end -%>
 
 <% if user_signed_in? -%>
-	<p>You're signed in, I guess</p>
+	<p>You're signed in, I guess. Hello <%= current_user.username %>.</p>
 	<%= link_to "Todos", todo_lists_path %><br/>
 	<%= link_to "Log out", destroy_user_session_path, :method => :delete %>
 <% end -%>
