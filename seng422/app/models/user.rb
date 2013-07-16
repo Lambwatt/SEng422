@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # yoink: http://www.tonyamoyal.com/2010/07/28/rails-authentication-with-devise-and-cancan-customizing-devise-controllers/
+  has_and_belongs_to_many :roles
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -15,5 +18,9 @@ class User < ActiveRecord::Base
 
   def email_changed?
 	  false
+  end
+
+  def role?(role)
+	  return !!self.roles.find_by_name(role.to_s)
   end
 end

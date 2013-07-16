@@ -13,7 +13,7 @@ class Ability
 		user ||= User.new
 
 		# TODO actually create a role model
-		if user.username == "admin"
+		if user.role? :admin
 			can :manage, :users
 			can :read, :todo_lists
 		else

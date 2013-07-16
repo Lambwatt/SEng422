@@ -1,4 +1,7 @@
 Seng422::Application.routes.draw do
+  resources :roles
+
+
 	devise_for :users,
 		:skip => [:registrations], # preventing user registration here.
 		:path => "",
