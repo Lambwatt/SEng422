@@ -7,8 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # dummy user
-user = User.new
-user.username = "surveyor"
-user.password = "password"
-user.password_confirmation = "password"
-user.save!
+unless User.find_by_username("surveyor")
+	user = User.new
+	user.username = "surveyor"
+	user.password = "password"
+	user.password_confirmation = "password"
+	user.save!
+end
