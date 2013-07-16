@@ -14,3 +14,11 @@ unless User.find_by_username("surveyor")
 	user.password_confirmation = "password"
 	user.save!
 end
+
+unless User.find_by_username("admin")
+	user = User.new
+	user.username = "admin"
+	user.password = "password"
+	user.password_confirmation = "password"
+	user.save!
+end
