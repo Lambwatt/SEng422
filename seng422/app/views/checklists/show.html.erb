@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cid:</b>
+  <%= @checklist.cid %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @checklist.title %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @checklist.status %>
+</p>
+
+<% @items = Item.where(cid: @checklist.cid) %>
+
+<% @items.each do |i| %>
+	<tr>
+		<td>
+			<%= i.status %>
+		</td>
+		<td>
+			<%= i.title %>
+		</td><br>
+	</tr>
+<% end %>
+<%= link_to 'Edit', edit_checklist_path(@checklist) %> |
+<%= link_to 'Back', checklists_path %>

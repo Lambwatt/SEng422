@@ -1,4 +1,10 @@
 Seng422::Application.routes.draw do
+  resources :checklists
+
+
+  resources :items
+
+
   resources :roles
 
 
