@@ -4,8 +4,7 @@ Seng422::Application.routes.draw do
 
   resources :items
 
-
-  resources :roles
+  resources :users
 
 
 	devise_for :users,
