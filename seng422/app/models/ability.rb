@@ -12,12 +12,9 @@ class Ability
 		#   end
 		user ||= User.new
 
-		# TODO actually create a role model
 		if user.role? :admin
-			can :manage, :users
-			can :read, :todo_lists
+			can :manage, User
 		else
-			can :read, :todo_lists
 		end
 
 		# The first argument to `can` is the action you are giving the user 
