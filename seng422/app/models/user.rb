@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  validates :username, :uniqueness => true
+
   # yoink: http://www.tonyamoyal.com/2010/07/28/rails-authentication-with-devise-and-cancan-customizing-devise-controllers/
   has_and_belongs_to_many :roles
 
