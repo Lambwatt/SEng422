@@ -7,7 +7,12 @@
 	</tr>
 	<% @users.each do |user| %>
 		<tr>
-			<td><%= user.username %></td>
+			<td>
+				<%= user.username %>
+				<% unless user.roles.empty? %>
+					<strong>(<%= user.roles.map(&:name).join(", ") %>)</strong>
+				<% end %>
+			</td>
 			<td><%= link_to 'Edit', edit_user_path(user) %></td>
 		</tr>
 	<% end %>
