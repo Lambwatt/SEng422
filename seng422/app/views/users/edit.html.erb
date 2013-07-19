@@ -1,41 +1,9 @@
 <h1>Editing <%= @user.username %></h1>
 
-<% if @user.errors.any? %>
-	<div id="errorExplanation">
-		<h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
-		<ul>
-			<% @user.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-		</ul>
-	</div>
-<% end %>
+<%= render partial: "errors" %>
 
 <%= form_for @user, :method => :put do |f| %>
-	<p>
-	<%= f.label :username %><br/>
-	<%= f.text_field :username %>
-	</p>
-	<p>
-	<%= f.label :password %><br/>
-	<%= f.text_field :password %>
-	</p>
-	<p>
-	<%= f.submit %>
-	</p>
-	<div>
-		<!-- No idea. I stole it from here: http://www.erin-lawrence.com/ruby/2012/02/has_and_belongs_to_many/ -->
-		<%= hidden_field_tag "user[role_ids][]", nil %>
-		<% Role.all.each do |role| %>
-			<label class="checkbox">
-				<%= check_box_tag "user[role_ids][]",
-					role.id,
-					@user.role_ids.include?(role.id),
-					id: dom_id(role) %>
-				<%= role.name %>
-			</label>
-		<% end %>
-	</div>
+	<%= render partial: "edit_info" , :locals => {:f => f} %>
 <% end %>
 
 <%= link_to "Back", users_path %>
