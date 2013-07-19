@@ -3,15 +3,16 @@
 <table>
 	<tr>
 		<th>Name</th>
+		<th>Roles</th>
 		<th></th>
 	</tr>
 	<% @users.each do |user| %>
 		<tr>
 			<td>
 				<%= user.username %>
-				<% unless user.roles.empty? %>
-					<strong>(<%= user.roles.map(&:name).join(", ") %>)</strong>
-				<% end %>
+			</td>
+			<td>
+				<%= user.roles.map(&:name).join(", ") %>
 			</td>
 			<td><%= link_to 'Edit', edit_user_path(user) %></td>
 		</tr>
