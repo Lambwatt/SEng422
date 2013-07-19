@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Roles
+Role.delete_all
+user_role = Role.find_or_create_by_name("surveyor")
+admin_role = Role.find_or_create_by_name("admin")
+
 # dummy users
 user = User.find_by_username("surveyor")
 user.destroy if user
@@ -13,6 +18,7 @@ user = User.new
 user.username = "surveyor"
 user.password = "password"
 user.password_confirmation = "password"
+user.roles = [user_role]
 user.save!
 
 user = User.find_by_username("admin")
@@ -21,6 +27,5 @@ user = User.new
 user.username = "admin"
 user.password = "password"
 user.password_confirmation = "password"
-role = Role.find_or_create_by_name("admin")
-user.roles.push role
+user.roles = [admin_role]
 user.save!
