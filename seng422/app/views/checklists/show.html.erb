@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Cid:</b>
-  <%= @checklist.cid %>
-</p>
-
-<p>
   <b>Title:</b>
   <%= @checklist.title %>
 </p>
@@ -15,9 +10,7 @@
   <%= @checklist.status %>
 </p>
 
-<% @items = Item.where(cid: @checklist.cid) %>
-
-<% @items.each do |i| %>
+<% @checklist.items.each do |i| %>
 	<tr>
 		<td>
 			<%= i.status %>
@@ -68,5 +61,19 @@
   <div id="map-canvas" style="height:400px; width:400px"></div>
 </p>
 
+<h2>Add a comment:</h2>
+<%= form_for([@checklist, @checklist.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="hidden_field">
+    <% f[ :status] = "unanswered" %><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_checklist_path(@checklist) %> |
-<%= link_to 'Back', checklists_path %>
+<%= link_to 'Back', checklists_path %> 

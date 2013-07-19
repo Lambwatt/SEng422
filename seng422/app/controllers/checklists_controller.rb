@@ -37,6 +37,11 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.find(params[:id])
   end
 
+	# GET /checklist/1/add
+	def add
+		@checklist = Checklist.find(params[:id])		
+	end
+
   # POST /checklists
   # POST /checklists.json
   def create
