@@ -21,15 +21,13 @@
 	</tr>
 <% end %>
 
-<h2>Add a comment:</h2>
-<%= form_for([@checklist, @checklist.comments.build]) do |f| %>
+<h2>Add an item:</h2>
+<%= form_for([@checklist, @checklist.items.build]) do |f| %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="hidden_field">
-    <% f[ :status] = "unanswered" %><br />
-  </div>
+  <%= hidden_field_tag "status" "unanswered"%>
   <div class="actions">
     <%= f.submit %>
   </div>
