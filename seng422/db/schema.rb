@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717210436) do
+ActiveRecord::Schema.define(:version => 20130719210657) do
 
   create_table "checklists", :force => true do |t|
     t.integer  "cid"
@@ -22,12 +22,14 @@ ActiveRecord::Schema.define(:version => 20130717210436) do
   end
 
   create_table "items", :force => true do |t|
-    t.integer  "cid"
     t.string   "title"
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "checklist_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "items", ["checklist_id"], :name => "index_items_on_checklist_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

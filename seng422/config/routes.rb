@@ -1,8 +1,7 @@
 Seng422::Application.routes.draw do
-  resources :checklists
-
-
-  resources :items
+  resources :checklists do
+  	resources :items
+	end
 
   resources :users
 
