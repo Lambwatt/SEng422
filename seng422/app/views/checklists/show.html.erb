@@ -27,5 +27,46 @@
 		</td><br>
 	</tr>
 <% end %>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  function initialize() {
+    //Not sure where I'm going to be getting the lat and lng values
+    var latLng = new google.maps.LatLng(<%= @checklist.lat %>, <%= @checklist.lng %>)
+
+    var mapOptions = {
+      center: latLng,
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      title:"Location"
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      content: " "
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent('<h2>Here is the location</h2>');
+      
+      infowindow.open(map, this);
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<p>
+  <strong>lat:</strong> <%= @checklist.lat %><br/>
+  <strong>lng:</strong> <%= @checklist.lng %><br/>
+  <div id="map-canvas" style="height:400px; width:400px"></div>
+</p>
+
 <%= link_to 'Edit', edit_checklist_path(@checklist) %> |
 <%= link_to 'Back', checklists_path %>

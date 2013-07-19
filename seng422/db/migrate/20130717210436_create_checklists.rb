@@ -4,6 +4,8 @@ class CreateChecklists < ActiveRecord::Migration
       t.integer :cid
       t.string :title
       t.string :status
+      t.decimal :lat
+      t.decimal :lng
 
       t.timestamps
     end

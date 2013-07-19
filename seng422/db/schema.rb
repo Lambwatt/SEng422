@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(:version => 20130717210436) do
     t.integer  "cid"
     t.string   "title"
     t.string   "status"
+    t.decimal  "lat"
+    t.decimal  "lng"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
