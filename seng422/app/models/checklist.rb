@@ -1,4 +1,4 @@
 class Checklist < ActiveRecord::Base
-  attr_accessible :cid, :status, :title
-	has_many :items#, :class_name => Item 
+  attr_accessible :cid, :status, :title, :lat, :lng
+	has_many :items#, :class_name => Item
 end
