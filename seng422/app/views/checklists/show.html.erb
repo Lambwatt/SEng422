@@ -10,17 +10,6 @@
   <%= @checklist.status %>
 </p>
 
-<% @checklist.items.each do |i| %>
-	<tr>
-		<td>
-			<%= i.status %>
-		</td>
-		<td>
-			<%= i.title %>
-		</td><br>
-	</tr>
-<% end %>
-
 
 =======
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -63,13 +52,25 @@
   <div id="map-canvas" style="height:400px; width:400px"></div>
 </p>
 
+=======<br>
+
+<% @checklist.items.each do |i| %>
+	<tr>
+		<td>
+			<%= i.status %>
+		</td>
+		<td>
+			<%= i.title %>
+		</td><br>
+	</tr>
+<% end %>
+
 <h2>Add an item:</h2>
 <%= form_for([@checklist, @checklist.items.build]) do |f| %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <%= hidden_field_tag "status" "unanswered"%>
   <div class="actions">
     <%= f.submit %>
   </div>
