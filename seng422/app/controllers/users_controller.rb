@@ -35,6 +35,21 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def edit_username
+		@user = User.find(params[:id])
+	end
+
+	def update_username
+		@user = User.find(params[:id])
+		@user.username = params[:user][:username]
+
+		if @user.save
+			redirect_to users_path
+		else
+			render :edit_username
+		end
+	end
+
 	def edit_roles
 		@user = User.find(params[:id])
 	end

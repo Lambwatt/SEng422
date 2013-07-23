@@ -7,6 +7,8 @@ Seng422::Application.routes.draw do
 		member do
 			get :edit_roles
 			put :update_roles
+			get :edit_username
+			put :update_username
 		end
 	end
 
