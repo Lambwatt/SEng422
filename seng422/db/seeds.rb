@@ -10,6 +10,7 @@
 Role.delete_all
 user_role = Role.find_or_create_by_name("surveyor")
 admin_role = Role.find_or_create_by_name("admin")
+manager_role = Role.find_or_create_by_name("manager")
 
 # dummy users
 user = User.find_by_username("surveyor")
@@ -28,4 +29,13 @@ user.username = "admin"
 user.password = "password"
 user.password_confirmation = "password"
 user.roles = [admin_role]
+user.save!
+
+user = User.find_by_username("manager")
+user.destroy if user
+user = User.new
+user.username = "manager"
+user.password = "password"
+user.password_confirmation = "password"
+user.roles = [manager_role]
 user.save!
