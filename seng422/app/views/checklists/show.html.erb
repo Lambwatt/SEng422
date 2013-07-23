@@ -56,12 +56,21 @@
 
 <% @checklist.items.each do |i| %>
 	<tr>
-		<td>
-			<%= i.status %>
+			<td>
+			<%= i.title.strip %>
 		</td>
 		<td>
-			<%= i.title %>
-		</td><br>
+			<%= form_for([@checklist, @checklist.items.find(i.id)],:class =>"edit_item_inline") do |f|  %>
+				<%= f.radio_button(:status, "unanswered") %>
+				<%= f.label "unanaswered" %>
+				<%= f.radio_button(:status, "completed") %>
+				<%= f.label "completed" %>
+				<%= f.radio_button(:status, "n/a") %>
+				<%= f.label "n/a" %>
+				<%= f.submit %>
+				<%= link_to 'Destroy',[i.checklist, i], :confirm=> { confirm: 'Are you sure?' }, :method => :delete %>
+			<% end %>
+		</td><br>	
 	</tr>
 <% end %>
 
