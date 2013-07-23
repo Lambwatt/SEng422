@@ -9,6 +9,8 @@ Seng422::Application.routes.draw do
 			put :update_roles
 			get :edit_username
 			put :update_username
+			get :reset_password
+			put :update_password
 		end
 	end
 

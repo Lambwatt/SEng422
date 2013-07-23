@@ -67,4 +67,20 @@ class UsersController < ApplicationController
 		end
 
 	end
+
+	def reset_password
+		@user = User.find(params[:id])
+	end
+
+	def update_password
+		@user = User.find(params[:id])
+		@user.password = params[:user][:password]
+
+		if @user.save
+			redirect_to users_path
+		else
+			render :reset_password
+		end
+	end
+
 end
