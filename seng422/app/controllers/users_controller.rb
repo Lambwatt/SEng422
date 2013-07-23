@@ -34,4 +34,22 @@ class UsersController < ApplicationController
 			render action: 'new'
 		end
 	end
+
+	def edit_roles
+		@user = User.find(params[:id])
+	end
+
+	def update_roles
+		@user = User.find(params[:id])
+
+		# pretty sure there's a better way to do this
+		@user.roles = params[:user][:role_ids].select {|s| s.length > 0}.map {|s| Role.find_by_id s.to_i}
+
+		if @user.save
+			redirect_to users_path
+		else
+			render :edit_roles
+		end
+
+	end
 end

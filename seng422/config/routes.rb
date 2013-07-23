@@ -1,9 +1,14 @@
 Seng422::Application.routes.draw do
-  resources :checklists do
-  	resources :items
+	resources :checklists do
+		resources :items
 	end
 
-  resources :users
+	resources :users do
+		member do
+			get :edit_roles
+			put :update_roles
+		end
+	end
 
 
 	devise_for :users,

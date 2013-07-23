@@ -14,7 +14,7 @@
 			<td>
 				<%= user.roles.map(&:name).join(", ") %>
 			</td>
-			<td><%= link_to 'Edit', edit_user_path(user) %></td>
+			<td><%= link_to 'Edit roles', edit_roles_user_path(user) %></td>
 		</tr>
 	<% end %>
 </table>
