@@ -31,6 +31,10 @@
     <%= f.label :lng %><br />
     <%= f.text_field :lng %>
   </div>
+  <div class="field">
+	  <%= f.label "Surveyor" %><br/>
+	  <%= f.collection_select :user_id, User.with_role(:surveyor), :id, :username, {:include_blank => true} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

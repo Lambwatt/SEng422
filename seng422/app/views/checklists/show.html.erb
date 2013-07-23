@@ -9,6 +9,14 @@
   <b>Status:</b>
   <%= @checklist.status %>
 </p>
+<p>
+	<b>Assigned to:</b>
+	<% if @checklist.user %>
+		<%= @checklist.user.username %>
+	<% else %>
+		No one
+	<% end %>
+</p>
 
 
 =======
