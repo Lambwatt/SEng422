@@ -85,4 +85,8 @@ class ChecklistsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def for_current_user
+	  @checklists = current_user.checklists
+  end
 end

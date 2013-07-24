@@ -1,0 +1,18 @@
+<h1><%= current_user.username %>'s checklists</h1>
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Status</th>
+		<th></th>
+	</tr>
+
+	<% current_user.checklists.each do |checklist| %>
+		<tr>
+			<td><%= checklist.title %></td>
+			<td><%= checklist.status %></td>
+			<td><%= link_to 'Show', checklist %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to "Back",  "/" %>

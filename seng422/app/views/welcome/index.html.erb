@@ -7,10 +7,15 @@
 <% end -%>
 
 <% if user_signed_in? -%>
-	<p>You're signed in, I guess. Hello <%= current_user.username %>.</p>
+	<p>Hello <%= current_user.username %>.</p>
+
 	<% if can? :manage, User -%>
 		<%= link_to "Manage users", users_path %><br/>
 	<% end %>
-	<%= link_to "Todos", todo_lists_path %><br/>
+
+	<% if current_user.role? :surveyor -%>
+		<%= link_to "View your checklists", for_current_user_checklists_path %><br/>
+	<% end %>
+
 	<%= link_to "Log out", destroy_user_session_path, :method => :delete %>
 <% end -%>
