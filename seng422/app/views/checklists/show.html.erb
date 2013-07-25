@@ -17,7 +17,7 @@
 					<%= f.radio_button(:status, "n/a") %>
 					<%= f.label "n/a" %>
 					<%= f.submit %>
-					<%= link_to 'Destroy',[i.checklist, i], :confirm=> { confirm: 'Are you sure?' }, :method => :delete %>
+					<%= link_to 'Destroy',[i.checklist, i], :confirm => 'Are you sure?', :method => :delete %>
 				<% end %>
 			</td>
 		<% end %>

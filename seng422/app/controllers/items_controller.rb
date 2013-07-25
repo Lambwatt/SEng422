@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+	authorize_resource
+
 	def create
     @checklist = Checklist.find(params[:checklist_id])
     @item = @checklist.items.create(params[:item])
