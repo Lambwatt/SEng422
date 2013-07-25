@@ -30,7 +30,6 @@ Seng422::Application.routes.draw do
 		:path => "",
 		:path_names => {:sign_in => "login", :sign_out => "logout"}
 
-	resources :todo_lists
 
 	get "welcome/index"
 	root to: "welcome#index"
