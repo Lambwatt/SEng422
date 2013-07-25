@@ -3,6 +3,8 @@ class Checklist < ActiveRecord::Base
 	has_many :items#, :class_name => Item
 	belongs_to :user
 
+	accepts_nested_attributes_for :items
+
  	before_save :default_values
   def default_values
  	 self.approved ||= "false"

@@ -1,9 +1,16 @@
 Seng422::Application.routes.draw do
 	resources :checklists do
-		resources :items	
+		resources :items
+
 		member do
 			get :approve
-		end			
+			get :fill_out
+			put :update_items
+		end
+
+		collection do
+			get :for_current_user
+		end
 	end
 
 	resources :users do

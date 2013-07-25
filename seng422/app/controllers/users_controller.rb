@@ -82,5 +82,4 @@ class UsersController < ApplicationController
 			render :reset_password
 		end
 	end
-
 end
