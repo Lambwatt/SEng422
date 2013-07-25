@@ -1,4 +1,6 @@
 class ChecklistsController < ApplicationController
+	authorize_resource
+
   # GET /checklists
   # GET /checklists.json
   def index
