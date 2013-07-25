@@ -85,4 +85,11 @@ class ChecklistsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def approve
+		@checklist = Checklist.find(params[:id])
+		@checklist.approved = "true"
+		@checklist.save
+		redirect_to checklist_path(@checklist)
+	end
 end

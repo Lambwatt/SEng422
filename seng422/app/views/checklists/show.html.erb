@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+	<b>Approval:</b>
+	<%= @checklist.approved %>
+<p>
 <p>
   <b>Title:</b>
   <%= @checklist.title %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @checklist.file %>
 </p>
 
 <p>
@@ -17,9 +25,13 @@
 		No one
 	<% end %>
 </p>
+======<br>
 
-
-=======
+<p>
+  <b>Description:</b>
+  <%= @checklist.description %>
+</p>
+=======<br>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
   function initialize() {
@@ -93,5 +105,6 @@
   </div>
 <% end %>
 
+<%= link_to 'Approve', approve_checklist_path(@checklist) %> |
 <%= link_to 'Edit', edit_checklist_path(@checklist) %> |
 <%= link_to 'Back', checklists_path %> 
