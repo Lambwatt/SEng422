@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(:version => 20130723195211) do
 
   create_table "checklists", :force => true do |t|
-    t.integer  "cid"
     t.string   "title"
     t.string   "status"
     t.decimal  "lat"
     t.decimal  "lng"
+    t.boolean  "approved"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
