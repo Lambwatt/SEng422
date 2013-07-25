@@ -79,32 +79,40 @@
 			<td>
 			<%= i.title.strip %>
 		</td>
-		<td>
-			<%= form_for([@checklist, @checklist.items.find(i.id)],:class =>"edit_item_inline") do |f|  %>
-				<%= f.radio_button(:status, "unanswered") %>
-				<%= f.label "unanaswered" %>
-				<%= f.radio_button(:status, "completed") %>
-				<%= f.label "completed" %>
-				<%= f.radio_button(:status, "n/a") %>
-				<%= f.label "n/a" %>
-				<%= f.submit %>
-				<%= link_to 'Destroy',[i.checklist, i], :confirm=> { confirm: 'Are you sure?' }, :method => :delete %>
-			<% end %>
-		</td><br>	
+		<% unless @checklist.approved %>
+			<td>
+				<%= form_for([@checklist, @checklist.items.find(i.id)],:class =>"edit_item_inline") do |f|  %>
+					<%= f.radio_button(:status, "unanswered") %>
+					<%= f.label "unanaswered" %>
+					<%= f.radio_button(:status, "completed") %>
+					<%= f.label "completed" %>
+					<%= f.radio_button(:status, "n/a") %>
+					<%= f.label "n/a" %>
+					<%= f.submit %>
+					<%= link_to 'Destroy',[i.checklist, i], :confirm=> { confirm: 'Are you sure?' }, :method => :delete %>
+				<% end %>
+			</td>
+		<% end %>
+		<br>	
 	</tr>
 <% end %>
 
-<h2>Add an item:</h2>
-<%= form_for([@checklist, @checklist.items.build]) do |f| %>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% unless @checklist.approved %>
+
+	<h2>Add an item:</h2>
+	<%= form_for([@checklist, @checklist.items.build]) do |f| %>
+	  <div class="field">
+	    <%= f.label :title %><br />
+	    <%= f.text_field :title %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
 <% end %>
 
-<%= link_to 'Approve', approve_checklist_path(@checklist) %> |
+<% if(@checklist.items.select{|item| item.status!="completed" and not item.id.nil?}.empty? and not @checklist.approved) %>
+	<%= link_to 'Approve', approve_checklist_path(@checklist) %> |
+<% end %>
 <%= link_to 'Edit', edit_checklist_path(@checklist) %> |
 <%= link_to 'Back', checklists_path %> 
