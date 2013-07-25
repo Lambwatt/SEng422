@@ -1,0 +1,33 @@
+<%= render partial: "show_core_checklist" %>
+
+<%= form_for @checklist, url: update_items_checklist_path(@checklist), method: :put do |checklist_form| %>
+
+<table>
+	<tr>
+		<th>Item</th>
+		<th>Status</th>
+	</tr>
+		<!-- Fields for: http://apidock.com/rails/ActionView/Helpers/FormHelper/fields_for -->
+		<%= checklist_form.fields_for :items do |item_fields| %>
+			<tr>
+				<td>
+					<%= item_fields.object.title.strip %>
+				</td>
+				<td>
+					<%= item_fields.radio_button :status, "unanswered",
+						checked: (item_fields.object.status == "unanswered") %>
+					<%= item_fields.label "unanaswered" %>
+					<%= item_fields.radio_button :status, "completed",
+						checked: (item_fields.object.status == "completed") %>
+					<%= item_fields.label "completed" %>
+					<%= item_fields.radio_button :status, "n/a",
+						checked: (item_fields.object.status == "n/a") %>
+					<%= item_fields.label "n/a" %>
+				</td><br>	
+			</tr>
+		<% end %>
+</table>
+
+<%= checklist_form.submit %>
+
+<% end %>

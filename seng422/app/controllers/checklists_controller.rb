@@ -89,4 +89,18 @@ class ChecklistsController < ApplicationController
   def for_current_user
 	  @checklists = current_user.checklists
   end
+
+  def fill_out
+	  @checklist = Checklist.find(params[:id])
+  end
+
+  def update_items
+	  params[:checklist][:items_attributes].each do |(_, param_item)|
+		  item = Item.find(param_item[:id])
+		  item.status = param_item[:status]
+		  item.save
+	  end
+
+	  redirect_to fill_out_checklist_path
+  end
 end

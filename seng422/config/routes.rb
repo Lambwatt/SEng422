@@ -4,6 +4,7 @@ Seng422::Application.routes.draw do
 
 		member do
 			get :fill_out
+			put :update_items
 		end
 
 		collection do
