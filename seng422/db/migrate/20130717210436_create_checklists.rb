@@ -6,6 +6,9 @@ class CreateChecklists < ActiveRecord::Migration
       t.decimal :lat
       t.decimal :lng
 			t.boolean :approved
+			t.text :description
+			t.date :date
+			t.integer :file
 
       t.timestamps
     end
