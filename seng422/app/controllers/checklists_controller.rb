@@ -50,7 +50,7 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.new(params[:checklist])
 
     respond_to do |format|
-      if @checklist.save
+      if @checklist.save and @checklist.add_default_items
         format.html { redirect_to @checklist, notice: 'Checklist was successfully created.' }
         format.json { render json: @checklist, status: :created, location: @checklist }
       else

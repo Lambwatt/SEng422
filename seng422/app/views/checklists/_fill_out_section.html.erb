@@ -1,0 +1,22 @@
+<!-- Fields for: http://apidock.com/rails/ActionView/Helpers/FormHelper/fields_for -->
+<h2><%= section %></h2>
+<table>
+	<%= checklist_form.fields_for :items, @checklist.items.select {|item| item.section == section} do |item_fields| %>
+		<tr>
+			<td>
+				<%= item_fields.object.title.strip %>
+			</td>
+			<td>
+				<%= item_fields.radio_button :status, "unanswered",
+					checked: (item_fields.object.status == "unanswered") %>
+				<%= item_fields.label "unanaswered" %>
+				<%= item_fields.radio_button :status, "Yes",
+					checked: (item_fields.object.status == "Yes") %>
+				<%= item_fields.label "Yes" %>
+				<%= item_fields.radio_button :status, "N/A",
+					checked: (item_fields.object.status == "N/A") %>
+				<%= item_fields.label "N/A" %>
+			</td>
+		</tr>
+	<% end %>
+</table>

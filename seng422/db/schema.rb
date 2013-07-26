@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723195211) do
+ActiveRecord::Schema.define(:version => 20130726004135) do
 
   create_table "checklists", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130723195211) do
     t.integer  "checklist_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "section"
   end
 
   add_index "items", ["checklist_id"], :name => "index_items_on_checklist_id"
