@@ -1,0 +1,14 @@
+<h3><%= section %></h3>
+<% @checklist.items.select {|item| item.section == section}.each do |i| %>
+	<tr>
+			<td>
+			<%= i.title.strip %>
+		</td>
+		<% unless @checklist.approved %>
+			<td>
+			<%= i.status.strip %>
+			</td>
+		<% end %>
+		<br>	
+	</tr>
+<% end %>

@@ -2,19 +2,14 @@
 
 <%= render partial: "show_core_checklist" %>
 
-<% @checklist.items.each do |i| %>
-	<tr>
-			<td>
-			<%= i.title.strip %>
-		</td>
-		<% unless @checklist.approved %>
-			<td>
-			<%= i.status.strip %>
-			</td>
-		<% end %>
-		<br>	
-	</tr>
-<% end %>
+<h2>Items</h2>
+<%= render partial: "show_items", locals: {:section => "Plan Title"} %>
+<%= render partial: "show_items", locals: {:section => "Main Body"} %>
+<%= render partial: "show_items", locals: {:section => "Scenery"} %>
+<%= render partial: "show_items", locals: {:section => "Deposit Statement"} %>
+<%= render partial: "show_items", locals: {:section => "Integrated Survey Area"} %>
+<%= render partial: "show_items", locals: {:section => "Miscellaneous"} %>
+<%= render partial: "show_items", locals: {:section => "Electronic Plan"} %>
 
 <% unless @checklist.approved %>
 
