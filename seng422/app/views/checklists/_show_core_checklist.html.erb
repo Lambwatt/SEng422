@@ -73,6 +73,7 @@
   <% @checklist.setup %>
 <table>
   <tr>
+    <% if @checlist.instance_variable_get(:@week) != nil %>
     <% @checklist.instance_variable_get(:@week).each do |p| %>
     <td>
       <strong>Day</strong>
@@ -91,6 +92,9 @@
       <%= p['text'] %>
       <br/>
     </td>
+    <% end %>
+    <% else %>
+      <td>Error finding city</td>
     <% end %>
   </tr>
 </table>

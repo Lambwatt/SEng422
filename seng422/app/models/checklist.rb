@@ -82,7 +82,7 @@ class Checklist < ActiveRecord::Base
   end
 
   def setup
-    woeid_url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.placefinder%20where%20text%3D%22' + self.lat.to_s + '%2C' + self.lng.to_s + '%22%20and%20gflags%3D%22R%22'
+    woeid_url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.placefinder%20where%20text%3D%22' + self.lat.to_f.to_s + '%2C' + self.lng.to_f.to_s + '%22%20and%20gflags%3D%22R%22'
     woeid_xml = Net::HTTP.get_response(URI.parse(woeid_url)).body
     woeid_data = XmlSimple.xml_in(woeid_xml)
 
