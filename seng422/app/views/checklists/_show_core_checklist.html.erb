@@ -55,7 +55,7 @@
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent('<h2>Here is the location</h2>');
+      infowindow.setContent('<h2><center><%= @checklist.title %></center></h2>');
       
       infowindow.open(map, this);
     });
@@ -65,8 +65,6 @@
 </script>
 
 <p>
-  <strong>lat:</strong> <%= @checklist.lat %><br/>
-  <strong>lng:</strong> <%= @checklist.lng %><br/>
   <div id="map-canvas" style="height:400px; width:400px"></div>
 </p>
 
