@@ -48,7 +48,7 @@
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent('<h2>Here is the location</h2>');
+      infowindow.setContent('<h2><%= @checklist.title %></h2>');
       
       infowindow.open(map, this);
     });
@@ -58,34 +58,35 @@
 </script>
 
 <p>
-  <strong>lat:</strong> <%= @checklist.lat %><br/>
-  <strong>lng:</strong> <%= @checklist.lng %><br/>
   <div id="map-canvas" style="height:400px; width:400px"></div>
 </p>
 
 <p>
   <% @checklist.setup %>
-  <% @checklist.instance_variable_get(:@week).each do |p| %>
-    <strong>Day</strong>
-    <%= p['day'] %>
-    <br/>
-    <strong>Date</strong>
-    <%= p['date'] %>
-    <br/>
-    <strong>Low</strong>
-    <%= p['low'] %>
-    <br/>
-    <strong>High</strong>
-    <%= p['high'] %>
-    <br/>
-    <strong>Description</strong>
-    <%= p['text'] %>
-    <br/>
-    <strong>Code</strong>
-    <%= p['code'] %>
-    <br/>
-    <br/>
-  <% end %>
+<table>
+  <tr>
+    <% @checklist.instance_variable_get(:@week).each do |p| %>
+    <td>
+      <strong>Day</strong>
+      <%= p['day'] %>
+      <br/>
+      <strong>Date</strong>
+      <%= p['date'] %>
+      <br/>
+      <strong>Low</strong>
+      <%= p['low'] %>
+      <br/>
+      <strong>High</strong>
+      <%= p['high'] %>
+      <br/>
+      <strong>Description</strong>
+      <%= p['text'] %>
+      <br/>
+      <br/>
+    </td>
+    <% end %>
+  </tr>
+</table>
 </p>
 
 <h2>Add an item:</h2>

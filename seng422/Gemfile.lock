@@ -110,6 +110,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    xml-simple (1.1.2)
 
 PLATFORMS
   ruby
@@ -124,3 +125,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  xml-simple
