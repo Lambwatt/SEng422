@@ -77,4 +77,18 @@ class Checklist < ActiveRecord::Base
 
 	  return save
   end
+
+  def setup
+    woeid_url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.placefinder%20where%20text%3D%22' + self.lat + '%2C' + self.lng + '%22%20and%20gflags%3D%22R%22'
+    woeid_xml = Net::HTTP.get_response(URI.parse(woeid_url)).body
+    woeid_data = XmlSimple.xml_in(woeid_xml)
+
+    woeid = woeid_data['result'][0]['Result'][0]['woeid']
+
+    url = 'http://weather.yahooapis.com/forecastrss?w=' + woeid.to_s + '&u=c'
+    xml = Net::HTTP.get_response(URI.parse(url)).body
+    data = XmlSimple.xml_in(xml)
+
+    @week = data['channel'][0]['item'][0]['forecast']
+  end
 end
