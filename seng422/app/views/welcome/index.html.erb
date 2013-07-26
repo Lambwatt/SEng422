@@ -13,6 +13,10 @@
 		<%= link_to "Manage users", users_path %><br/>
 	<% end %>
 
+	<% if current_user.role? :manager -%>
+		<%= link_to "Manage checklists", checklists_path %><br/>
+	<% end %>
+
 	<% if current_user.role? :surveyor -%>
 		<%= link_to "View your checklists", for_current_user_checklists_path %><br/>
 	<% end %>

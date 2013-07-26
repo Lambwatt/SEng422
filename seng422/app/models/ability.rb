@@ -14,7 +14,16 @@ class Ability
 
 		if user.role? :admin
 			can :manage, User
-		else
+		end
+
+		if user.role? :manager
+			can [:read, :create, :update, :destroy, :approve], Checklist
+			can :manage, Item
+		end
+
+		if user.role? :surveyor
+			can [:fill_out, :for_current_user, :update_items], Checklist
+			can :update, Item
 		end
 
 		# The first argument to `can` is the action you are giving the user 
