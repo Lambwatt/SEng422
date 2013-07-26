@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :checklist, :foreign_key => "checklist_id"
-  attr_accessible :status, :title
+  attr_accessible :status, :title, :section
 
 	before_save :default_values
   def default_values
