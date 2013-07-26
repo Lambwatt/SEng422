@@ -102,7 +102,11 @@ class ChecklistsController < ApplicationController
 
   def fill_out
 	  @checklist = Checklist.find(params[:id])
-  end
+  	if @checklist.status=="Unanswered" 
+			@checklist.status = "In Progress"
+			@checklist.save
+		end
+	end
 
   def update_items
 	  params[:checklist][:items_attributes].each do |(_, param_item)|
@@ -111,6 +115,11 @@ class ChecklistsController < ApplicationController
 		  item.save
 	  end
 
+		@checklist = Checklist.find(params[:id])
+		if @checklist.items.select{|item| item.status=="unanaswered"}.empty?
+				@checklist.status = "Complete"
+				@checklist.save
+		end
 	  redirect_to fill_out_checklist_path
   end
 end

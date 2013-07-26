@@ -17,12 +17,12 @@
 					<%= item_fields.radio_button :status, "unanswered",
 						checked: (item_fields.object.status == "unanswered") %>
 					<%= item_fields.label "unanaswered" %>
-					<%= item_fields.radio_button :status, "completed",
-						checked: (item_fields.object.status == "completed") %>
-					<%= item_fields.label "completed" %>
-					<%= item_fields.radio_button :status, "n/a",
-						checked: (item_fields.object.status == "n/a") %>
-					<%= item_fields.label "n/a" %>
+					<%= item_fields.radio_button :status, "Yes",
+						checked: (item_fields.object.status == "Yes") %>
+					<%= item_fields.label "Yes" %>
+					<%= item_fields.radio_button :status, "N/A",
+						checked: (item_fields.object.status == "N/A") %>
+					<%= item_fields.label "N/A" %>
 				</td><br>	
 			</tr>
 		<% end %>

@@ -9,16 +9,7 @@
 		</td>
 		<% unless @checklist.approved %>
 			<td>
-				<%= form_for([@checklist, @checklist.items.find(i.id)],:class =>"edit_item_inline") do |f|  %>
-					<%= f.radio_button(:status, "unanswered") %>
-					<%= f.label "unanaswered" %>
-					<%= f.radio_button(:status, "completed") %>
-					<%= f.label "completed" %>
-					<%= f.radio_button(:status, "n/a") %>
-					<%= f.label "n/a" %>
-					<%= f.submit %>
-					<%= link_to 'Destroy',[i.checklist, i], :confirm => 'Are you sure?', :method => :delete %>
-				<% end %>
+			<%= i.status.strip %>
 			</td>
 		<% end %>
 		<br>	
@@ -39,7 +30,7 @@
 	<% end %>
 <% end %>
 
-<% if(@checklist.items.select{|item| item.status!="completed" and not item.id.nil?}.empty? and not @checklist.approved) %>
+<% if(@checklist.items.select{|item| item.status=="unanswered"}.empty? and not @checklist.approved) %>
 	<%= link_to 'Approve', approve_checklist_path(@checklist) %> |
 <% end %>
 <%= link_to 'Edit', edit_checklist_path(@checklist) %> |
