@@ -8,7 +8,8 @@
 			<% unless @checklist.approved %>
 				<td>
 					<%= i.status.strip %>
-				</td>
+				</td>	
+				<td><%= link_to 'Destroy',[i.checklist, i], :confirm=> { confirm: 'Are you sure?' }, :method => :delete %></td>
 			<% end %>	
 		</tr>
 	<% end %>

@@ -6,7 +6,7 @@
 			<td>
 				<%= item_fields.object.title.strip %>
 			</td>
-			<% unless @checklist.approved %>%>
+			<% unless @checklist.approved %>
 				<td>
 					<%= item_fields.radio_button :status, "unanswered",
 						checked: (item_fields.object.status == "unanswered") %>

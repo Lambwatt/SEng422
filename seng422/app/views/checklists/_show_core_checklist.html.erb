@@ -4,7 +4,7 @@
 </p>
 
 <p>
-  <b>File:</b>
+  <b>File Number:</b>
   <%= @checklist.file %>
 </p>
 
@@ -70,4 +70,32 @@
   <div id="map-canvas" style="height:400px; width:400px"></div>
 </p>
 
+=======<br>
+<p>
+  <% @checklist.setup %>
+<table>
+  <tr>
+    <% @checklist.instance_variable_get(:@week).each do |p| %>
+    <td>
+      <strong>Day</strong>
+      <%= p['day'] %>
+      <br/>
+      <strong>Date</strong>
+      <%= p['date'] %>
+      <br/>
+      <strong>Low</strong>
+      <%= p['low'] %>
+      <br/>
+      <strong>High</strong>
+      <%= p['high'] %>
+      <br/>
+      <strong>Description</strong>
+      <%= p['text'] %>
+      <br/>
+      <br/>
+    </td>
+    <% end %>
+  </tr>
+</table>
+</p>
 =======<br>
