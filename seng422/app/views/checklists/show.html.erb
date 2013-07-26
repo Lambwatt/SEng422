@@ -2,13 +2,14 @@
 
 <%= render partial: "show_core_checklist" %>
 
-<%= render partial: "show_section", locals: { :section => "Plan Title"} %>
-<%= render partial: "show_section", locals: { :section => "Main Body"} %>
-<%= render partial: "show_section", locals: { :section => "Scenery"} %>
-<%= render partial: "show_section", locals: { :section => "Deposit Statement"} %>
-<%= render partial: "show_section", locals: { :section => "Integrated Survey Area"} %>
-<%= render partial: "show_section", locals: { :section => "Miscellaneous"} %>
-<%= render partial: "show_section", locals: { :section => "Electronic Plan"} %>
+<h2>Items</h2>
+<%= render partial: "show_items", locals: {:section => "Plan Title"} %>
+<%= render partial: "show_items", locals: {:section => "Main Body"} %>
+<%= render partial: "show_items", locals: {:section => "Scenery"} %>
+<%= render partial: "show_items", locals: {:section => "Deposit Statement"} %>
+<%= render partial: "show_items", locals: {:section => "Integrated Survey Area"} %>
+<%= render partial: "show_items", locals: {:section => "Miscellaneous"} %>
+<%= render partial: "show_items", locals: {:section => "Electronic Plan"} %>
 
 <% unless @checklist.approved %>
 
