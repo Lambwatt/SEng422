@@ -116,8 +116,11 @@ class ChecklistsController < ApplicationController
 	  end
 
 		@checklist = Checklist.find(params[:id])
-		if @checklist.items.select{|item| item.status=="unanaswered"}.empty?
+		if @checklist.items.select{|item| item.status=="unanswered"}.empty?
 				@checklist.status = "Complete"
+				@checklist.save
+		else
+				@checklist.status = "In Progress"
 				@checklist.save
 		end
 	  redirect_to fill_out_checklist_path

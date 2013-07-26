@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20130723195211) do
     t.decimal  "lng"
     t.boolean  "approved"
     t.text     "description"
-    t.date     "date"
     t.integer  "file"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
