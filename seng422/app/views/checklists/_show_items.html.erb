@@ -9,7 +9,7 @@
 				<td>
 					<%= i.status.strip %>
 				</td>	
-				<td><%= link_to 'Destroy',[i.checklist, i], :confirm=> { confirm: 'Are you sure?' }, :method => :delete %></td>
+				<td><%= link_to 'Destroy',[i.checklist, i], :confirm=>  'Are you sure?' , :method => :delete %></td>
 			<% end %>	
 		</tr>
 	<% end %>
