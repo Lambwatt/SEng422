@@ -89,6 +89,7 @@ class ChecklistsController < ApplicationController
 	def approve
 		@checklist = Checklist.find(params[:id])
 		@checklist.approved = "true"
+		@checklist.status = "Approved"
 		@checklist.save
 		redirect_to checklist_path(@checklist)
 	end
