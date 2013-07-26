@@ -24,6 +24,13 @@
 			<%= f.label :title %><br />
 			<%= f.text_field :title %>
 		</div>
+		<div class="field">
+			<%= f.label :section %><br/>
+			<%= f.collection_select :section,
+				["Plan Title", "Main Body", "Scenery", "Deposit Statement",
+					"Integrated Area Survey", "Miscellaneous", "Electronic Plan"],
+				:to_s, :to_s %>
+		</div>
 		<div class="actions">
 			<%= f.submit %>
 		</div>
